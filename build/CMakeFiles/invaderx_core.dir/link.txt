@@ -1,0 +1,2 @@
+C:\msys64\ucrt64\bin\ar.exe qc libinvaderx_core.a CMakeFiles/invaderx_core.dir/src/cpu.cpp.obj CMakeFiles/invaderx_core.dir/src/disassembler.cpp.obj CMakeFiles/invaderx_core.dir/src/hardware.cpp.obj CMakeFiles/invaderx_core.dir/src/renderer.cpp.obj CMakeFiles/invaderx_core.dir/src/rom_loader.cpp.obj CMakeFiles/invaderx_core.dir/src/sdl_frontend.cpp.obj
+C:\msys64\ucrt64\bin\ranlib.exe libinvaderx_core.a

@@ -1,0 +1,196 @@
+Start testing: Jun 03 13:04 India Standard Time
+----------------------------------------------------------
+1/5 Testing: test_cpu
+1/5 Test: test_cpu
+Command: "C:/Users/krish/InvaderX_clean/InvaderX/build/test_cpu.exe"
+Directory: C:/Users/krish/InvaderX_clean/InvaderX/build
+"test_cpu" start time: Jun 03 13:04 India Standard Time
+Output:
+----------------------------------------------------------
+T1  defaults
+T2  MVI + MOV r,r
+T3  ADD / ADI / AC + CY
+T4  SUB / SBI / borrow
+T5  ANA / ORA / XRA
+T6  PSW round-trip
+T7  conditional cycle counts
+T8  CALL / RET
+T9  RST interrupt injection
+T10 disassembler
+
+PASS 560   FAIL 0
+<end of output>
+Test time =   0.26 sec
+----------------------------------------------------------
+Test Passed.
+"test_cpu" end time: Jun 03 13:04 India Standard Time
+"test_cpu" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/5 Testing: test_loader
+2/5 Test: test_loader
+Command: "C:/Users/krish/InvaderX_clean/InvaderX/build/test_loader.exe"
+Directory: C:/Users/krish/InvaderX_clean/InvaderX/build
+"test_loader" start time: Jun 03 13:04 India Standard Time
+Output:
+----------------------------------------------------------
+L1  load spec order
+L2  load MAME order
+L3  missing file -> structured error
+L4  wrong-size file -> structured error
+L5  ROM write protection (full 0x0000-0x1FFF sweep)
+L6  RAM writable across 0x2000-0x3FFF
+L7  read16 little-endian
+L8  boot disassembly dump
+  (showing first 9 instructions:)
+  0x0000  00        NOP
+  0x0001  00        NOP
+  0x0002  00        NOP
+  0x0003  C3 00 18  JMP  0x1800
+  0x0006  31 00 24  LXI  SP, 0x2400
+  0x0009  3E 00     MVI  A, 0x00
+  0x000B  CD 10 18  CALL 0x1810
+  0x000E  FB        EI
+  0x000F  76        HLT
+
+PASS 185   FAIL 0
+
+--- sample print_load_report output ---
+ROM load report  [order = Spec (brief)]
+  chip       address   bytes   status
+  ---------  --------  ------  --------
+  invaders.e  0x0000      2048  OK
+  invaders.f  0x0800      2048  OK
+  invaders.g  0x1000      2048  OK
+  invaders.h  0x1800      2048  OK
+  -> all four chips loaded (8192 bytes total)
+<end of output>
+Test time =   0.11 sec
+----------------------------------------------------------
+Test Passed.
+"test_loader" end time: Jun 03 13:04 India Standard Time
+"test_loader" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/5 Testing: test_hardware
+3/5 Test: test_hardware
+Command: "C:/Users/krish/InvaderX_clean/InvaderX/build/test_hardware.exe"
+Directory: C:/Users/krish/InvaderX_clean/InvaderX/build
+"test_hardware" start time: Jun 03 13:04 India Standard Time
+Output:
+----------------------------------------------------------
+H1  shift register empty state
+H2  shift register slide
+H3  shift register barrel at every offset
+H4  shift offset only honors low 3 bits
+H5  port 1 default = 0x08 (bit-3 hardwired)
+H6  input press/release/set
+H7  watchdog + unmapped ports = no-op
+H8  scheduler fires RST 1 at scanline 96
+H9  scheduler fires RST 2 at scanline 224
+H10 scheduler returns frame-boundary exactly once
+H11 scheduler runs 1000 frames without drift
+H12 CPU OUT/IN routes through hardware (round-trip)
+H13 full frame: EI/HLT + RST 1 + RST 2 handlers fire once each
+H14 strong cpu_in_port overrides weak stub
+
+PASS 56   FAIL 0
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"test_hardware" end time: Jun 03 13:04 India Standard Time
+"test_hardware" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/5 Testing: test_renderer
+4/5 Test: test_renderer
+Command: "C:/Users/krish/InvaderX_clean/InvaderX/build/test_renderer.exe"
+Directory: C:/Users/krish/InvaderX_clean/InvaderX/build
+"test_renderer" start time: Jun 03 13:04 India Standard Time
+Output:
+----------------------------------------------------------
+R1  empty VRAM -> all black
+R2  all-on VRAM -> all white
+R3  corner mapping (4 corners, exact pixel match)
+R4  full memory row 0 -> full screen column 0
+R5  full memory column 0 -> full screen row 255
+R6  draw 'L' shape and dump ASCII art
+  (downsampled 8x; '#' = lit, '.' = dark)
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+  #.......................................................
+
+PASS 1223   FAIL 0
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"test_renderer" end time: Jun 03 13:04 India Standard Time
+"test_renderer" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/5 Testing: test_integration
+5/5 Test: test_integration
+Command: "C:/Users/krish/InvaderX_clean/InvaderX/build/test_integration.exe"
+Directory: C:/Users/krish/InvaderX_clean/InvaderX/build
+"test_integration" start time: Jun 03 13:04 India Standard Time
+Output:
+----------------------------------------------------------
+I1  synthetic ROM loads
+I2  disassembler reflects the synthetic boot vector
+  (boot dump:)
+  0x0000  C3 40 00  JMP  0x0040
+  0x0003  00        NOP
+  0x0004  00        NOP
+  0x0005  00        NOP
+  ...
+  0x0040  31 00 24  LXI  SP, 0x2400
+  0x0043  AF        XRA  A
+  0x0044  FB        EI
+  0x0045  76        HLT
+I3  pump 60 frames
+I4  both RST handlers wrote VRAM
+I5  framebuffer reflects painted VRAM (0xAA at 0x2400)
+I6  CPU cycle counter within tolerance after 60 frames
+  (actual: 1999983 cycles after 60 frames; nominal 2,000,000)
+
+PASS 26   FAIL 0
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"test_integration" end time: Jun 03 13:04 India Standard Time
+"test_integration" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jun 03 13:04 India Standard Time

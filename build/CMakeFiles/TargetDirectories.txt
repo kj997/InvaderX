@@ -1,0 +1,10 @@
+C:/Users/krish/InvaderX_clean/InvaderX/build/CMakeFiles/invaderx_core.dir
+C:/Users/krish/InvaderX_clean/InvaderX/build/CMakeFiles/invaderx.dir
+C:/Users/krish/InvaderX_clean/InvaderX/build/CMakeFiles/test_cpu.dir
+C:/Users/krish/InvaderX_clean/InvaderX/build/CMakeFiles/test_loader.dir
+C:/Users/krish/InvaderX_clean/InvaderX/build/CMakeFiles/test_hardware.dir
+C:/Users/krish/InvaderX_clean/InvaderX/build/CMakeFiles/test_renderer.dir
+C:/Users/krish/InvaderX_clean/InvaderX/build/CMakeFiles/test_integration.dir
+C:/Users/krish/InvaderX_clean/InvaderX/build/CMakeFiles/test.dir
+C:/Users/krish/InvaderX_clean/InvaderX/build/CMakeFiles/edit_cache.dir
+C:/Users/krish/InvaderX_clean/InvaderX/build/CMakeFiles/rebuild_cache.dir
