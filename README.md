@@ -58,6 +58,19 @@ renderer, and game loop are all original code.
 
   (Download the `SDL2-devel-x.y.z-mingw` package from libsdl.org.)
 
+  > **Note on the official MinGW package layout.** The `SDL2-devel-x.y.z-mingw`
+  > zip does NOT extract to a flat `include/lib` layout. It contains
+  > architecture subfolders:
+  > ```
+  > C:\SDL2\x86_64-w64-mingw32\   (64-bit — use this with MSYS2 ucrt64/mingw64)
+  > C:\SDL2\i686-w64-mingw32\     (32-bit)
+  > ```
+  > with headers in `...\include\SDL2\SDL.h` and the DLL in `...\bin\SDL2.dll`.
+  > **The build auto-detects this** — just extract the whole zip to `C:\SDL2`
+  > and point CMake at `C:\SDL2`. CMake descends into the right architecture
+  > subfolder, finds `include\SDL2\`, and locates `bin\SDL2.dll` automatically.
+  > You do not need to flatten or rearrange anything.
+
 ### Build
 
 ```bat
@@ -379,6 +392,27 @@ Inputs are press-and-hold: holding a key keeps the corresponding bit set.
 The game ROM contains its own debounce logic, so the emulator faithfully
 reports raw button state rather than synthesizing edges.
 
+### Starting a game (important)
+
+Space Invaders boots into **attract mode** — a self-running demo where the
+cannon moves and fires on its own to attract players. This is not a bug and
+**you cannot control the demo.** To play, follow the arcade sequence:
+
+1. **Press Enter** to insert a coin. `CREDIT 01` appears at the bottom of
+   the screen.
+2. **Press 1** to start a 1-player game. The demo stops and the cannon
+   becomes yours.
+3. **Now** Left / Right move the cannon and Space fires.
+
+If the cannon "moves randomly" and ignores your arrow keys, you are watching
+attract mode — insert a coin (Enter) and start a game (1) first. Also make
+sure the SDL window is focused (clicked on); keyboard input only registers
+when the window is active.
+
+Only one player shot may be on screen at a time — you must wait for your
+current shot to hit something or leave the top of the screen before firing
+again. This is authentic 1978 behavior, not an input lag bug.
+
 ---
 
 ## Testing
@@ -541,5 +575,14 @@ This project contains **no copyrighted ROM data**. The *Space Invaders* ROM
 files (`invaders.e/.f/.g/.h`) remain the intellectual property of Taito and
 are **not distributed** with this emulator. You must supply your own legally
 obtained ROM dumps to run the game.
+
+How to legally obtain them: dump the chips from an original Space Invaders
+arcade PCB you own, or acquire them through a licensed re-release / official
+compilation. Downloading ROM dumps you do not own a license for may be
+copyright infringement in your jurisdiction — that is your responsibility,
+not the emulator's.
+
+Each of the four files must be exactly 2,048 bytes. The emulator validates
+the size on load and rejects merged or padded dumps.
 
 The emulator source code itself is original work.
